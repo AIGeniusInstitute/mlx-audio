@@ -48,5 +48,5 @@ def text2audio(text_dir):
 
 
 if __name__ == "__main__":
-    text_dir = '/Users/bytedance/github/mlx-audio/ppt2video_image/AI学习指南从新手入门到进阶提升'
+    text_dir = '/Users/bytedance/github/mlx-audio/ppt2video_image/AI大模型的本质'
     text2audio(text_dir)

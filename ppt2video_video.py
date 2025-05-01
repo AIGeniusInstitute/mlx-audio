@@ -86,10 +86,12 @@ def create_slideshow_video(image_folder, audio_folder, output_file, image_ext='.
 
 
 if __name__ == "__main__":
+    ppt_filename = 'AI大模型的本质'
+
     # 用户可以修改这些路径
-    image_folder = "/Users/bytedance/github/mlx-audio/ppt2video_image/AI学习指南从新手入门到进阶提升"  # 图片文件夹
-    audio_folder = "/Users/bytedance/github/mlx-audio/ppt2video_image/AI学习指南从新手入门到进阶提升"  # 音频文件夹
-    output_video = "/Users/bytedance/github/mlx-audio/ppt2video_video/AI学习指南从新手入门到进阶提升.mp4"  # 输出视频路径
+    image_folder = f"/Users/bytedance/github/mlx-audio/ppt2video_image/{ppt_filename}"  # 图片文件夹
+    audio_folder = f"/Users/bytedance/github/mlx-audio/ppt2video_image/{ppt_filename}"  # 音频文件夹
+    output_video = f"/Users/bytedance/github/mlx-audio/ppt2video_video/{ppt_filename}.mp4"  # 输出视频路径
 
     # 创建视频
     create_slideshow_video(
