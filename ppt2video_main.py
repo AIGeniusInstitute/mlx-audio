@@ -1,24 +1,13 @@
 import sys
 
+from ppt2video_video import create_slideshow_video
+
 from ppt2images import ppt_to_images_pptx
 from ppt2video_audio import text2audio
 from ppt2video_text import read_images_text
-from ppt2video_video import create_slideshow_video
 
-if __name__ == '__main__':
 
-    ppt_filename = 'AI大模型的本质'
-
-    # ppt_filename 从命令行参数获取
-    # 参数校验
-    if len(sys.argv) > 2:
-        print("参数错误，请输入一个PPT文件名")
-        sys.exit(1)
-
-    args = sys.argv[1:]
-    if len(args) > 0:
-        ppt_filename = args[0]
-
+def ppt2video(ppt_filename):
     ppt_suffix = '.pptx'
     ppt_path = f'/Users/bytedance/github/mlx-audio/ppt2video_ppt/{ppt_filename}{ppt_suffix}'
 
@@ -45,3 +34,24 @@ if __name__ == '__main__':
         '.png',
         '.wav'
     )
+
+
+if __name__ == '__main__':
+    ppt_filename = ''
+    # ppt_filename 从命令行参数获取
+    # 参数校验
+    if len(sys.argv) > 2:
+        print("参数错误，请输入一个PPT文件名")
+        sys.exit(1)
+
+    args = sys.argv[1:]
+    if len(args) > 0:
+        ppt_filename = args[0]
+
+    print(f"ppt_filename: {ppt_filename}")
+
+    if ppt_filename == '':
+        print("参数错误，请输入一个PPT文件名")
+        sys.exit(1)
+
+    ppt2video(ppt_filename)
