@@ -227,3 +227,18 @@ mx.save_safetensors("./8bit/kokoro-v1_0.safetensors", weights, metadata={"format
 - Thanks to the Apple MLX team for providing a great framework for building TTS and STS models.
 - This project uses the Kokoro model architecture for text-to-speech synthesis.
 - The 3D visualization uses Three.js for rendering.
+
+
+
+----
+
+pip install librosa numpy soundfile scipy tqdm
+
+
+pip install SpeechRecognition
+
+
+python generate_outetts_config.py --audio my_voice.m4a --text '你好，我是陈光剑。中国程序员， AI 天才研究院和光剑读书创始人。资深技术专家和架构师，AI 大模型应用架构师和大数据架构师。' --output my_voice.json
+
+
+python generate_audio.py

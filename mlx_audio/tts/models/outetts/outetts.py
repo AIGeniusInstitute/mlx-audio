@@ -49,6 +49,8 @@ class Model(LlamaModel):
         if voice is None:
             voice = f"{Path(__file__).parent}/default_speaker.json"
 
+        print(f"Using voice: {voice}")
+
         with open(voice, "r") as f:
             speaker = json.load(f)
 
