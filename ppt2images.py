@@ -4,6 +4,7 @@ import tempfile
 
 from pdf2image import convert_from_path
 
+
 def ppt_to_images_pptx(ppt_path, output_dir=None, format="png", dpi=200):
     """
     通过PDF中转将PPTX文件的每一张幻灯片转换为图片
@@ -75,6 +76,8 @@ def ppt_to_images_pptx(ppt_path, output_dir=None, format="png", dpi=200):
 
         return image_paths
 
+
 if __name__ == "__main__":
     ppt_path = '/Users/bytedance/github/mlx-audio/ppt2video_ppt/AI学习指南从新手入门到进阶提升.pptx'
+
     ppt_to_images_pptx(ppt_path)
