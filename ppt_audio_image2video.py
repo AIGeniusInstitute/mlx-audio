@@ -14,6 +14,65 @@ def natural_sort_key(s):
     return [int(text) if text.isdigit() else text.lower() for text in re.split(r'(\d+)', s)]
 
 
+def advanced_animation(clip, effect_type='ken_burns'):
+    """
+    使用OpenCV实现高级动画效果
+
+    参数:
+        clip: MoviePy视频剪辑对象
+        effect_type: 效果类型，可选'ken_burns', 'rotate_zoom', 'pulse'
+    """
+    import cv2
+    import numpy as np
+
+    duration = clip.duration
+
+    def effect(get_frame, t):
+        frame = get_frame(t)
+        h, w = frame.shape[:2]
+        progress = t / duration  # 0到1之间的进度值
+
+        if effect_type == 'ken_burns':
+            # Ken Burns效果：平移+缩放
+            zoom = 1 + 0.1 * progress
+            x_offset = int(w * 0.1 * progress)
+            y_offset = int(h * 0.1 * progress)
+
+            matrix = np.float32([
+                [zoom, 0, -x_offset],
+                [0, zoom, -y_offset]
+            ])
+
+            frame = cv2.warpAffine(frame, matrix, (w, h))
+
+        elif effect_type == 'rotate_zoom':
+            # 旋转+缩放效果
+            angle = 1 * progress  # 最大旋转1度
+            zoom = 1 + 0.1 * progress
+
+            center = (w / 2, h / 2)
+            rot_matrix = cv2.getRotationMatrix2D(center, angle, zoom)
+            frame = cv2.warpAffine(frame, rot_matrix, (w, h))
+
+        elif effect_type == 'pulse':
+            # 脉冲效果：周期性缩放
+            zoom = 1 + 0.1 * np.sin(progress * np.pi * 4)
+
+            matrix = np.float32([
+                [zoom, 0, w / 2 * (1 - zoom)],
+                [0, zoom, h / 2 * (1 - zoom)]
+            ])
+
+            frame = cv2.warpAffine(frame, matrix, (w, h))
+
+        return frame
+
+    try:
+        return clip.transform(effect)  # 新版MoviePy
+    except AttributeError:
+        return clip.fl(effect)  # 兼容旧版MoviePy
+
+
 def create_slideshow_video(image_folder, audio_folder, output_file, image_ext='.png', audio_ext='.wav'):
     """
     创建幻灯片视频
@@ -59,6 +118,12 @@ def create_slideshow_video(image_folder, audio_folder, output_file, image_ext='.
 
         # 创建图片视频片段，持续时间与音频相同
         img_clip = ImageClip(img_path).with_duration(duration)
+
+        # 图片动画效果
+        # 从 ['ken_burns','rotate_zoom','pulse'] 数组中随机选择一个动画效果
+        effect_type = ['ken_burns', 'rotate_zoom', 'pulse'][i % 3]
+
+        img_clip = advanced_animation(img_clip, effect_type=effect_type)
 
         # 添加音频到图片片段
         video_clip = img_clip.with_audio(audio_clip)

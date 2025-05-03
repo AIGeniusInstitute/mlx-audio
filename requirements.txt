@@ -19,4 +19,14 @@ encodec>=0.1.1
 mlx_whisper>=0.4.2
 tqdm>=4.67.1
 pyloudnorm>=0.1.1
-fastrtc[vad, stt]
+fastrtc[vad, stt]~=0.0.23
+einops~=0.8.1
+scipy~=1.15.2
+tokenizers~=0.21.1
+pyyaml~=6.0.2
+requests~=2.32.3
+pydantic~=2.11.4
+setuptools~=78.1.1
+pdf2image~=1.17.0
+moviepy~=2.1.2
+librosa~=0.11.0

@@ -1,4 +1,4 @@
-from ppt2video_video import create_slideshow_video
+from ppt_audio_image2video import create_slideshow_video
 
 from ppt2images import ppt_to_images_pptx
 from ppt2video_audio import text2audio
@@ -38,7 +38,7 @@ def ppt2video(ppt_filename):
 
 if __name__ == '__main__':
     ppt_files = [
-        'AI大模型基本概念',
+        '神经网络与深度学习',
 
     ]
     for ppt_filename in ppt_files:
