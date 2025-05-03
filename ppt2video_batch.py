@@ -37,6 +37,9 @@ def ppt2video(ppt_filename):
 
 
 if __name__ == '__main__':
-    ppt_files = ['AI大模型的本质', '一切皆是映射跨学科视角下的认知范式']
+    ppt_files = [
+        'AI大模型基本概念',
+
+    ]
     for ppt_filename in ppt_files:
         ppt2video(ppt_filename)

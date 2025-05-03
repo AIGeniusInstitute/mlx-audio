@@ -12,7 +12,9 @@ def gen_audio(text, audio_fname):
         text=text,
         model_path="prince-canuma/Kokoro-82M",
         # https://huggingface.co/prince-canuma/Kokoro-82M/tree/main/voices
-        voice="zm_yunjian",
+        # voice="zm_yunjian",
+        # voice="zm_yunyang",
+        voice="zm_yunxi",
         speed=1,
         # Language Options
         # 🇺🇸 'a' - American English
