@@ -122,7 +122,7 @@ def create_slideshow_video(image_folder, audio_folder, output_file, image_ext='.
         # 图片动画效果
         # 从 ['ken_burns','rotate_zoom','pulse'] 数组中随机选择一个动画效果
         effect_type = ['ken_burns', 'rotate_zoom', 'pulse'][i % 3]
-
+        # 应用动画效果
         img_clip = advanced_animation(img_clip, effect_type=effect_type)
 
         # 添加音频到图片片段

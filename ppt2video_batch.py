@@ -1,8 +1,7 @@
-from ppt_audio_image2video import create_slideshow_video
-
 from ppt2images import ppt_to_images_pptx
 from ppt2video_audio import text2audio
 from ppt2video_text import read_images_text
+from ppt_audio_image2video import create_slideshow_video
 
 
 def ppt2video(ppt_filename):
@@ -38,8 +37,10 @@ def ppt2video(ppt_filename):
 
 if __name__ == '__main__':
     ppt_files = [
-        '神经网络与深度学习',
-
+        '知识博客自媒体创业账号矩阵流量运营推广方案书',
+        '程序员从大厂回归独立开发创业计划书',
+        '技术博客创业计划书',
     ]
+
     for ppt_filename in ppt_files:
         ppt2video(ppt_filename)
